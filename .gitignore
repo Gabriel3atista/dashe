@@ -1,0 +1,23 @@
+# Rust / Cargo
+/target/
+Cargo.lock
+
+# Dashe config local (não versionar configs pessoais)
+*.local.toml
+dashe-theme.toml
+dashe-aliases.toml
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.*
