@@ -1,0 +1,52 @@
+# Dashe — Powerlevel10k inspired theme
+# Copy to ~/.config/dashe/config.toml to use
+
+[prompt]
+symbol   = "❯"
+avatar   = "⚡"
+two_lines = true
+show_time = false
+time_format = "%H:%M"
+layout = [
+  "avatar",
+  "user",
+  "hostname",
+  "dir",
+  "git_branch",
+  "git_status",
+]
+
+[colors]
+username      = "#af87ff"
+hostname      = "#00afff"
+directory     = "#87ff87"
+git_branch    = "#ffaf00"
+git_dirty     = "#ff5f5f"
+git_staged    = "#ffaf00"
+git_clean     = "#87ff87"
+prompt_symbol = "#af87ff"
+separator     = "#626262"
+
+[git]
+enabled = true
+
+[git.branch_rules]
+main       = "red"
+master     = "red"
+develop    = "blue"
+"feature/*" = "yellow"
+"hotfix/*"  = "magenta"
+"release/*" = "cyan"
+
+[git.status]
+dirty  = "●"
+staged = "●"
+clean  = "●"
+show_count = false
+
+[segments]
+show_exit_code    = true
+show_python_venv  = true
+show_node_version = false
+shorten_dir       = true
+max_dir_depth     = 3

@@ -1,0 +1,30 @@
+# Dashe — Ocean theme
+
+[prompt]
+symbol    = "→"
+avatar    = "🌊"
+two_lines = false
+
+[colors]
+username      = "#00d7ff"
+hostname      = "#0087d7"
+directory     = "#00afff"
+git_branch    = "#ffaf5f"
+git_dirty     = "#ff5f5f"
+git_staged    = "#ffaf5f"
+git_clean     = "#00d7af"
+prompt_symbol = "#00d7ff"
+separator     = "#005f87"
+
+[git]
+enabled = true
+
+[git.branch_rules]
+main    = "red"
+master  = "red"
+"feature/*" = "yellow"
+
+[git.status]
+dirty  = "●"
+staged = "●"
+clean  = "●"
