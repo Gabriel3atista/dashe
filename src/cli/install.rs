@@ -43,7 +43,7 @@ pub async fn run_init() -> Result<()> {
         .interact_text()?;
 
     // Step 2: Pick a preset theme
-    let themes = vec!["p10k", "starship", "ocean", "retro", "minimal"];
+    let themes = vec!["default"];
     let theme_idx = Select::new()
         .with_prompt("Choose a theme preset")
         .items(&themes)
@@ -102,7 +102,7 @@ pub async fn run_init() -> Result<()> {
 
     // Build and save config
     let mut config = Config::default();
-    config.prompt.avatar = Some(avatar);
+    config.icons.user = avatar;
     config.prompt.symbol = prompt_symbol.to_string();
     config.git.enabled = git_enabled;
     config.sync.enabled = sync_enabled;
@@ -128,42 +128,9 @@ pub async fn run_init() -> Result<()> {
 }
 
 fn apply_theme_to_config(config: &mut Config, theme: &str) {
-    match theme {
-        "p10k" => {
-            config.colors.username = "#af87ff".to_string();
-            config.colors.hostname = "#00afff".to_string();
-            config.colors.directory = "#87ff87".to_string();
-            config.colors.git_branch = "#ffaf00".to_string();
-            config.prompt.symbol = "❯".to_string();
-        }
-        "starship" => {
-            config.colors.username = "#88c0d0".to_string();
-            config.colors.hostname = "#81a1c1".to_string();
-            config.colors.directory = "#5e81ac".to_string();
-            config.colors.git_branch = "#ebcb8b".to_string();
-            config.prompt.symbol = "❯".to_string();
-        }
-        "ocean" => {
-            config.colors.username = "#00d7ff".to_string();
-            config.colors.hostname = "#0087d7".to_string();
-            config.colors.directory = "#00afff".to_string();
-            config.colors.git_branch = "#ffaf5f".to_string();
-            config.prompt.symbol = "→".to_string();
-        }
-        "retro" => {
-            config.colors.username = "#5faf00".to_string();
-            config.colors.hostname = "#af8700".to_string();
-            config.colors.directory = "#d7af00".to_string();
-            config.colors.git_branch = "#ff8700".to_string();
-            config.prompt.symbol = "$".to_string();
-        }
-        "minimal" => {
-            config.colors.username = "#767676".to_string();
-            config.colors.hostname = "#585858".to_string();
-            config.colors.directory = "#d0d0d0".to_string();
-            config.colors.git_branch = "#878787".to_string();
-            config.prompt.symbol = "▶".to_string();
-        }
-        _ => {}
+    use crate::theme::builtin_themes;
+    let themes = builtin_themes();
+    if let Some(t) = themes.into_iter().find(|t| t.name == theme) {
+        t.apply_to(config);
     }
 }

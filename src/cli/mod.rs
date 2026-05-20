@@ -45,12 +45,6 @@ pub enum Commands {
         action: SyncCommands,
     },
 
-    /// Show help and usage examples
-    Help {
-        /// Topic to get help on (alias, theme, sync, git, prompt)
-        topic: Option<String>,
-    },
-
     /// Diagnose environment and troubleshoot issues
     Doctor,
 
@@ -145,7 +139,6 @@ impl Cli {
             Commands::Alias { action } => alias_command(action).await,
             Commands::Theme { action } => theme_command(action).await,
             Commands::Sync { action } => sync_command(action).await,
-            Commands::Help { topic } => help_command(topic).await,
             Commands::Doctor => doctor_command().await,
             Commands::Bench => bench_command().await,
             Commands::Uninstall { yes } => uninstall_command(yes).await,
