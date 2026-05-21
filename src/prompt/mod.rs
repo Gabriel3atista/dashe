@@ -47,7 +47,7 @@ impl Renderer {
 
         // ── segment: [user_icon] username@hostname ────────────────────────────
         let user_seg = format!(
-            "{c_user_icon}{icon}{r} {c_username}{username}{r}{c_sep}@{r}{c_hostname}{hostname}{r}",
+            "{c_user_icon}{icon}{r}{c_username}{username}{r}{c_sep}@{r}{c_hostname}{hostname}{r}",
             icon = ico.user,
         );
 
@@ -80,7 +80,8 @@ impl Renderer {
         let extras = build_extras(cfg, r);
 
         // ── assemble line 1 ───────────────────────────────────────────────────
-        let sep = format!("{c_sep} - {r}");
+        let separator = cfg.prompt.separator.clone();
+        let sep = format!("{c_sep}{separator}{r}");
 
         let mut parts = vec![user_seg, dir_seg];
         if !git_seg.is_empty() {

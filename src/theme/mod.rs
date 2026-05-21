@@ -72,8 +72,8 @@ pub fn builtin_themes() -> Vec<Theme> {
             },
             icons: IconsConfig {
                 user:       "⚡".to_string(),
-                directory:  "X".to_string(),   // Nerd Font folder
-                git_branch: "".to_string(),   // Nerd Font branch
+                directory:  "X".to_string(),
+                git_branch: "".to_string(),
                 git_dirty:  "✗".to_string(),
                 git_staged: "✚".to_string(),
                 git_clean:  "✔".to_string(),
